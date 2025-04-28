@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class BankAccount {
+    String accountHolder;
+    double balance;
+
+    void createAccount(String name, double initialBalance) {
+        accountHolder = name;
+        balance = initialBalance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient Balance");
+        }
+    }
+
+    void displayBalance() {
+        System.out.println("Account Holder: " + accountHolder + ", Balance: " + balance);
+    }
+}
+
+public class Bank {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        double initialBalance = sc.nextDouble();
+        double depositAmount = sc.nextDouble();
+        double withdrawAmount = sc.nextDouble();
+
+        BankAccount account = new BankAccount();
+        account.createAccount(name, initialBalance);
+        account.deposit(depositAmount);
+        account.withdraw(withdrawAmount);
+        account.displayBalance();
+    }
+}
