@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int rollNo;
+    int m1, m2, m3;
+
+    Student(String name, int rollNo, int m1, int m2, int m3) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.m1 = m1;
+        this.m2 = m2;
+        this.m3 = m3;
+    }
+
+    void calculateGrade() {
+        int total = m1 + m2 + m3;
+        double average = total / 3.0;
+        String grade;
+        if (average >= 90) grade = "A";
+        else if (average >= 75) grade = "B";
+        else if (average >= 50) grade = "C";
+        else grade = "D";
+
+        System.out.println("Name: " + name + ", Roll No: " + rollNo + ", Grade: " + grade);
+    }
+}
+
+public class School {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        int rollNo = sc.nextInt();
+        int m1 = sc.nextInt();
+        int m2 = sc.nextInt();
+        int m3 = sc.nextInt();
+
+        Student student = new Student(name, rollNo, m1, m2, m3);
+        student.calculateGrade();
+    }
+}
